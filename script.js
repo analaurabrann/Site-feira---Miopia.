@@ -1,77 +1,68 @@
-// CÓDIGO DO MODAL 
-const btnAjuda = document.querySelector(".botao-ajuda");
-const btnFechar = document.querySelector(".botao-fechar");
-const modal = document.querySelector(".modal-fundo");
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. AUMENTAR E DIMINUIR FONTE
+  const btnIncrease = document.getElementById('btn-increase-font');
+  const btnDecrease = document.getElementById('btn-decrease-font');
+  let currentFontSize = 16; // tamanho base em px
 
-if (btnAjuda && modal) {
-    btnAjuda.addEventListener("click", () => modal.style.display = "block");
-}
-if (btnFechar && modal) {
-    btnFechar.addEventListener("click", () => modal.style.display = "none");
-}
+  btnIncrease.addEventListener('click', () => {
+    if (currentFontSize < 24) {
+      currentFontSize += 2;
+      document.documentElement.style.setProperty('--font-size-base', `${currentFontSize}px`);
+    }
+  });
 
-// TAMANHO DE FONTES
-let tamanhoFonteAtual = 16;
-const passo = 2;
-const FONTE_MINIMA = 12;
-const FONTE_MAXIMA = 24;
+  btnDecrease.addEventListener('click', () => {
+    if (currentFontSize > 12) {
+      currentFontSize -= 2;
+      document.documentElement.style.setProperty('--font-size-base', `${currentFontSize}px`);
+    }
+  });
 
-const btnAumentaFonte = document.getElementById("btnAumentaTexto");
-const btnDiminuiFonte = document.getElementById("btnDiminuiTexto");
+  // 2. ALTO CONTRASTE
+  const btnContrast = document.getElementById('btn-contrast');
+  btnContrast.addEventListener('click', () => {
+    document.body.classList.toggle('high-contrast');
+  });
 
-if (btnAumentaFonte) {
-    btnAumentaFonte.addEventListener("click", () => {
-        if (tamanhoFonteAtual < FONTE_MAXIMA) {
-            tamanhoFonteAtual += passo;
-            document.documentElement.style.fontSize = `${tamanhoFonteAtual}px`;
-        }
-    });
-}
+  // 3. LEITURA EM VOZ ALTA (Web Speech API)
+  const btnTTS = document.getElementById('btn-tts');
+  let isSpeaking = false;
 
-if (btnDiminuiFonte) {
-    btnDiminuiFonte.addEventListener("click", () => {
-        if (tamanhoFonteAtual > FONTE_MINIMA) {
-            tamanhoFonteAtual -= passo;
-            document.documentElement.style.fontSize = `${tamanhoFonteAtual}px`;
-        }
-    });
-}
-
-// LEITURA DE TELA (TEXT-TO-SPEECH)
-let lendo = false;
-const btnLeitura = document.querySelector(".botao-leitura");
-
-if (btnLeitura) {
-    btnLeitura.addEventListener("click", alternarLeitura);
-}
-
-function alternarLeitura() {
-    // Se não houver suporte no navegador
-    if (!('speechSynthesis' in window)) return;
-
-    if (speechSynthesis.speaking) {
-        if (speechSynthesis.paused) {
-            speechSynthesis.resume();
-        } else {
-            speechSynthesis.pause();
-        }
-        return;
+  btnTTS.addEventListener('click', () => {
+    if (!('speechSynthesis' in window)) {
+      alert('Desculpe, seu navegador não suporta a função de leitura em voz alta.');
+      return;
     }
 
-    const conteudo = document.querySelector("main");
-    if (!conteudo) return;
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      isSpeaking = false;
+      btnTTS.innerHTML = '🔊 Leitura em Voz Alta';
+      return;
+    }
 
-    const fala = new SpeechSynthesisUtterance(conteudo.innerText);
-    fala.lang = "pt-BR";
+    // Lê todo o conteúdo textual do elemento principal (#main-content)
+    const mainContent = document.getElementById('main-content');
+    const textToRead = mainContent.innerText;
 
-    fala.onend = finalizarLeitura;
-    fala.onerror = finalizarLeitura; // Limpa o estado em caso de erro
+    if (!textToRead) return;
 
-    speechSynthesis.cancel(); // Limpa leituras anteriores pendentes
-    speechSynthesis.speak(fala);
-    lendo = true;
-}
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = 'pt-BR';
+    utterance.rate = 1.0;
 
-function finalizarLeitura() {
-    lendo = false;
-}
+    utterance.onend = () => {
+      isSpeaking = false;
+      btnTTS.innerHTML = '🔊 Leitura em Voz Alta';
+    };
+
+    utterance.onerror = () => {
+      isSpeaking = false;
+      btnTTS.innerHTML = '🔊 Leitura em Voz Alta';
+    };
+
+    window.speechSynthesis.speak(utterance);
+    isSpeaking = true;
+    btnTTS.innerHTML = '⏹️ Parar Leitura';
+  });
+});
