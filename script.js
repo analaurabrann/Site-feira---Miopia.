@@ -24,21 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle('high-contrast');
   });
 
-  // 3. LEITURA EM VOZ ALTA COM SELEÇÃO DE VOZ TRADICIONAL/PADRÃO
+  // 3. LEITURA EM VOZ ALTA (VOZ FEMININA EM PT-BR)
   const btnTTS = document.getElementById('btn-tts');
   let isSpeaking = false;
-  let portugueseVoice = null;
+  let femalePortugueseVoice = null;
 
-  // Função para carregar a melhor voz em PT-BR disponível no navegador
   function loadVoices() {
     const voices = window.speechSynthesis.getVoices();
-    // Procura por vozes do Google ou nativas em português do Brasil
-    portugueseVoice = voices.find(voice => 
-      voice.lang.includes('pt-BR') || voice.lang.includes('pt_BR')
-    ) || voices.find(voice => voice.lang.startsWith('pt'));
+    
+    // Filtra primeiro todas as vozes em Português do Brasil
+    const ptVoices = voices.filter(voice => 
+      voice.lang.includes('pt-BR') || voice.lang.includes('pt_BR') || voice.lang.startsWith('pt')
+    );
+
+    // Busca por nomes comuns de vozes femininas ou marcações do sistema
+    femalePortugueseVoice = ptVoices.find(voice => 
+      voice.name.toLowerCase().includes('female') ||
+      voice.name.toLowerCase().includes('fernanda') ||
+      voice.name.toLowerCase().includes('francisca') ||
+      voice.name.toLowerCase().includes('helena') ||
+      voice.name.toLowerCase().includes('maria') ||
+      voice.name.toLowerCase().includes('google') // A voz padrão do Google PT-BR é feminina
+    ) || ptVoices[0]; // Fallback para qualquer voz PT caso não encontre o nome específico
   }
 
-  // Carrega as vozes (alguns navegadores carregam de forma assíncrona)
   loadVoices();
   if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
     window.speechSynthesis.onvoiceschanged = loadVoices;
@@ -64,11 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'pt-BR';
-    utterance.rate = 1.0; // Velocidade da fala
+    utterance.rate = 1.0;
 
-    // Define a voz localizada caso encontrada
-    if (portugueseVoice) {
-      utterance.voice = portugueseVoice;
+    if (femalePortugueseVoice) {
+      utterance.voice = femalePortugueseVoice;
     }
 
     utterance.onend = () => {
