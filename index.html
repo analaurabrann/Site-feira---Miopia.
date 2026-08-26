@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Óptica na Escola - Aprendendo a Ciência da Luz</title>
+  <title>Miopia & Deficiência Visual - A Física da Visão</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
         <button id="btn-increase-font" title="Aumentar Fonte" aria-label="Aumentar Fonte">A+</button>
         <button id="btn-decrease-font" title="Diminuir Fonte" aria-label="Diminuir Fonte">A-</button>
         <button id="btn-contrast" title="Alternar Alto Contraste" aria-label="Alternar Alto Contraste">◐ Contraste</button>
-        <button id="btn-tts" title="Ouvir Conteúdo (Leitura em Voz Alta)" aria-label="Ouvir Conteúdo">🔊 Leitura em Voz Alta</button>
+        <button id="btn-tts" title="Ouvir Conteúdo (Leitura em Voz Alta)" aria-label="Ouvir Conteúdo em Voz Alta">🔊 Leitura em Voz Alta</button>
       </div>
     </div>
   </header>
@@ -23,8 +23,8 @@
   <!-- CABEÇALHO PRINCIPAL -->
   <header class="main-header">
     <div class="container">
-      <h1>🔬 Óptica na Escola</h1>
-      <p class="subtitle">Explorando a luz, as lentes e a visão de forma interativa e acessível</p>
+      <h1>👁️ Deficiência Visual e Miopia</h1>
+      <p class="subtitle">Compreendendo a saúde ocular, a baixa visão e a Física por trás da refração</p>
     </div>
   </header>
 
@@ -32,8 +32,8 @@
   <nav class="main-nav" aria-label="Navegação Principal">
     <div class="container">
       <ul>
-        <li><a href="#introducao">Introdução</a></li>
-        <li><a href="#experimentos">Conceitos</a></li>
+        <li><a href="#sobre">A Miopia</a></li>
+        <li><a href="#fisica">A Física da Miopia</a></li>
         <li><a href="#midia">Vídeo</a></li>
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#links-externos">Links Externos</a></li>
@@ -41,91 +41,94 @@
     </div>
   </nav>
 
-  <!-- CONTEÚDO PRINCIPAL (ÁREA LIDA PELA ACESSIBILIDADE) -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main id="main-content" class="container">
 
-    <!-- SEÇÃO INTRODUÇÃO -->
-    <section id="introducao" class="card">
-      <h2>O que é Óptica?</h2>
-      <p>A Óptica é o ramo da Física que estuda a luz, seus fenômenos de propagação, reflexão, refração e suas interações com a matéria. No ambiente escolar, o estudo da óptica nos ajuda a entender desde o funcionamento dos nossos olhos até a tecnologia dos telescópios, microscópios e fibras ópticas.</p>
+    <!-- SEÇÃO SOBRE MIOPIA E DEFICIÊNCIA VISUAL -->
+    <section id="sobre" class="card">
+      <h2>O que é a Miopia e a Deficiência Visual?</h2>
+      <p>A <strong>miopia</strong> é um erro de refração no qual os objetos próximos são vistos com clareza, mas os objetos distantes parecem embaçados e desfocados. Isso acontece quando o globo ocular é mais longo do que o normal ou a córnea possui uma curvatura muito acentuada.</p>
+      <p>Quando a miopia atinge graus muito elevados (geralmente acima de -6,00 dioptrias), ela é classificada como <em>miopia alta ou degenerativa</em>. Nesses casos, pode levar a complicações sérias na retina e causar <strong>baixa visão ou deficiência visual severa</strong>, exigindo recursos de acessibilidade e acompanhamento oftalmológico contínuo.</p>
     </section>
 
-    <!-- SEÇÃO FENÔMENOS -->
-    <section id="experimentos" class="card">
-      <h2>Principais Conceitos Estudados</h2>
+    <!-- SEÇÃO BÔNUS: A FÍSICA NA MIOPIA -->
+    <section id="fisica" class="card highlight-card-physics">
+      <h2>⚡ Informação Bônus: A Física por trás da Miopia</h2>
+      <p>Na óptica geométrica, o olho humano funciona como um sistema óptico que combina lentes convergentes (córnea e cristalino) e um anteparo projetor (retina):</p>
+      
       <div class="grid-concepts">
         <div class="concept-item">
-          <h3>Reflexão da Luz</h3>
-          <p>Ocorre quando a luz atinge uma superfície e retorna ao meio de origem. É o princípio que nos permite ver nossa imagem nos espelhos planos e esféricos.</p>
+          <h3>Formação da Imagem</h3>
+          <p>Em um olho normal (emetrope), os raios de luz paralelos convergem exatamente <strong>sobre a retina</strong>.</p>
         </div>
         <div class="concept-item">
-          <h3>Refração da Luz</h3>
-          <p>É a mudança de velocidade e direção que a luz sofre ao passar de um meio transparente para outro (como do ar para a água ou para uma lente de óculos).</p>
+          <h3>O Problema na Miopia</h3>
+          <p>No olho miope, o ponto focal de convergência é formado <strong>antes da retina</strong>, resultando em uma imagem projetada desfocada.</p>
         </div>
         <div class="concept-item">
-          <h3>Lentes e Correção Visual</h3>
-          <p>Estudo sobre como lentes convergentes e divergentes auxiliam na correção de problemas de visão como a Miopia, Hipermetropia e Astigmatismo.</p>
+          <h3>A Solução Física (Lentes Divergentes)</h3>
+          <p>Para corrigir o foco, utiliza-se uma <strong>lente divergente (côncava)</strong>. Ela espalha levemente os raios de luz antes de entrarem no olho, fazendo com que a imagem final se forme exatamente sobre a retina.</p>
         </div>
       </div>
     </section>
 
-    <!-- ESPAÇO PARA VÍDEO (ATUALIZADO) -->
+    <!-- ESPAÇO PARA VÍDEO -->
     <section id="midia" class="card">
-      <h2>📹 Vídeo Educativo: Experimento da Refração da Luz</h2>
-      <p>Assista ao vídeo abaixo para ver na prática como a luz se desvia ao passar do ar para a água, criando a ilusão do "lápis quebrado":</p>
+      <h2>📹 Vídeo Educativo</h2>
+      <p>Assista ao vídeo abaixo para ver como a luz se comporta dentro do olho miope e como as lentes corrigem o foco:</p>
       
       <div class="video-container">
-        <!-- Substitua a URL abaixo pelo link de incorporação (embed) do vídeo desejado -->
+        <!-- Substitua o atributo src pelo link de incorporação (embed) do seu vídeo -->
         <iframe 
-          src="https://youtu.be/Xy5p4Y9je4E?si=iX4ijaxqOOoxQDHy" 
-          title="Demonstração prática da refração da luz na água" 
+          src="https://www.youtube-nocookie.com/embed/fD1544bM_kU" 
+          title="Vídeo demonstrativo sobre como a miopia se forma no olho humano" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
         </iframe>
       </div>
-      <p class="video-fallback"><em>Descrição de Acessibilidade: O vídeo mostra um copo transparente com água onde um lápis é mergulhado, demonstrando visualmente o efeito da refração.</em></p>
+      <p class="video-fallback"><em>Acessibilidade: O vídeo demonstra a passagem de feixes de luz através do olho humano e a correção por meio de lentes côncavas.</em></p>
     </section>
 
     <!-- ESPAÇO PARA GALERIA DE IMAGENS -->
     <section id="galeria" class="card">
-      <h2>🖼️ Galeria Didática de Óptica</h2>
-      <p>Confira algumas ilustrações esquemáticas sobre os experimentos e conceitos de luz:</p>
+      <h2>🖼️ Galeria sobre Miopia e Acessibilidade</h2>
+      <p>Esquemas visuais explicativos sobre a anatomia do olho miope e a óptica corretiva:</p>
 
       <div class="image-gallery">
         <figure class="gallery-item">
-          <img src="https://via.placeholder.com/400x250/1d3557/ffffff?text=Refracao+da+Luz" alt="Diagrama mostrando um feixe de luz sofrendo desvio ao passar do ar para a água.">
-          <figcaption>Esquema de Refração da Luz na água.</figcaption>
+          <img src="https://via.placeholder.com/400x250/1d3557/ffffff?text=Olho+Miope" alt="Diagrama esquemático de um olho miope mostrando o ponto focal de luz formando-se antes da retina.">
+          <figcaption>Foco da luz se formando antes da retina no olho miope.</figcaption>
         </figure>
 
         <figure class="gallery-item">
-          <img src="https://via.placeholder.com/400x250/457b9d/ffffff?text=Lentes+Convergentes" alt="Ilustração de raios de luz paralelos passando por uma lente convergente.">
-          <figcaption>Foco de uma Lente Convergente.</figcaption>
+          <img src="https://via.placeholder.com/400x250/457b9d/ffffff?text=Lente+Divergente" alt="Diagrama mostrando raios de luz passando por uma lente divergente e focando corretamente na retina.">
+          <figcaption>Correção física através de uma lente divergente (côncava).</figcaption>
         </figure>
 
         <figure class="gallery-item">
-          <img src="https://via.placeholder.com/400x250/e63946/ffffff?text=Prisma+e+Dispersao" alt="Desenho de um prisma de vidro decompondo a luz branca nas cores do arco-íris.">
-          <figcaption>Decomposição da Luz em um Prisma.</figcaption>
+          <img src="https://via.placeholder.com/400x250/e63946/ffffff?text=Recursos+de+Acessibilidade" alt="Ilustração de ferramentas para baixa visão, como lupas de aumento e leitor de tela em computadores.">
+          <figcaption>Tecnologias assistivas para pessoas com baixa visão.</figcaption>
         </figure>
       </div>
     </section>
 
     <!-- ESPAÇO PARA LINKS EXTERNOS SOBRE O TEMA -->
     <section id="links-externos" class="card highlight-card">
-      <h2>🔗 Links Externos e Materiais de Apoio</h2>
-      <p>Para aprofundar seus conhecimentos em Física e Óptica Geométrica, acesse os materiais oficiais abaixo:</p>
+      <h2>🔗 Links Externos e Materiais sobre Deficiência Visual</h2>
+      <p>Consulte fontes oficiais e instituições dedicadas à saúde ocular e acessibilidade:</p>
       <ul class="external-links-list">
         <li>
-          <a href="https://phet.colorado.edu/pt_BR/simulations/filter?subjects=optics" target="_blank" rel="noopener noreferrer">
-            🌐 Simuladores Interativos de Óptica (PhET Interactive Simulations - Univ. do Colorado)
+          <a href="https://www.cbo.com.br" target="_blank" rel="noopener noreferrer">
+            🌐 Conselho Brasileiro de Oftalmologia (CBO)
           </a>
-          <span class="link-description">- Experimente lentes, espelhos e refração em um laboratório virtual interativo.</span>
+          <span class="link-description">- Informações oficiais sobre prevenção de erros de refração e saúde ocular.</span>
         </li>
         <li>
-          <a href="https://brasilescola.uol.com.br/fisica/optica.htm" target="_blank" rel="noopener noreferrer">
-            📖 Brasil Escola - Guia Completo de Óptica Física e Geométrica
+          <a href="https://www.dorina.org.br" target="_blank" rel="noopener noreferrer">
+            📖 Fundação Dorina Nowill para Cegos
           </a>
-          <span class="link-description">- Artigos com teoria completa e exercícios resolvidos.</span>
+          <span class="link-description">- Recursos, apoio e inclusão para pessoas com deficiência visual e baixa visão.</span>
         </li>
       </ul>
     </section>
@@ -135,7 +138,7 @@
   <!-- RODAPÉ -->
   <footer class="main-footer">
     <div class="container">
-      <p>Projeto Escolar - Óptica na Escola &copy; 2026. Desenvolvido com foco em acessibilidade e inclusão.</p>
+      <p>Projeto Escolar - Miopia & Deficiência Visual &copy; 2026. Desenvolvido com foco em acessibilidade e inclusão.</p>
     </div>
   </footer>
 

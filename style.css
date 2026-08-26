@@ -2,6 +2,7 @@
   --primary-color: #1d3557;
   --secondary-color: #457b9d;
   --accent-color: #e63946;
+  --physics-accent: #2a9d8f;
   --bg-color: #f8f9fa;
   --card-bg: #ffffff;
   --text-color: #2b2d42;
@@ -14,6 +15,7 @@ body.high-contrast {
   --primary-color: #ffff00;
   --secondary-color: #00ffff;
   --accent-color: #ff00ff;
+  --physics-accent: #00ff00;
   --bg-color: #000000;
   --card-bg: #121212;
   --text-color: #ffffff;
@@ -129,7 +131,7 @@ body.high-contrast .main-nav a {
   text-decoration: underline;
 }
 
-/* CARTÕES E SEÇÕES */
+/* CARTÕES DE CONTEÚDO */
 main {
   padding: 30px 20px;
 }
@@ -155,6 +157,16 @@ body.high-contrast .card h2 {
   color: var(--primary-color);
 }
 
+/* CARTÃO BÔNUS FÍSICA */
+.highlight-card-physics {
+  border-left: 6px solid var(--physics-accent);
+}
+
+.highlight-card-physics h2 {
+  border-bottom-color: var(--physics-accent);
+}
+
+/* CONCEITOS GRID */
 .grid-concepts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -197,6 +209,11 @@ body.high-contrast .concept-item {
   height: 100%;
 }
 
+.video-fallback {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
 /* GALERIA DE IMAGENS */
 .image-gallery {
   display: grid;
@@ -228,7 +245,7 @@ body.high-contrast .concept-item {
 
 /* LINKS EXTERNOS */
 .highlight-card {
-  border-left: 5px solid var(--secondary-color);
+  border-left: 6px solid var(--secondary-color);
 }
 
 .external-links-list {
