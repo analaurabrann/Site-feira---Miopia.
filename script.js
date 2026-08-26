@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. LEITURA EM VOZ ALTA (SELEÇÃO DE VOZ FEMININA PT-BR)
+  // 3. LEITURA EM VOZ ALTA (VOZ FEMININA / FERNANDA PT-BR)
   const btnTTS = document.getElementById('btn-tts');
   let isSpeaking = false;
   let selectedFemaleVoice = null;
@@ -45,23 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (ptVoices.length === 0) return;
 
-    // Prioriza vozes com nomes femininos conhecidos do sistema/navegador
-    selectedFemaleVoice = ptVoices.find(voice => {
+    // Busca especificamente pela voz "Fernanda" ou outras opções femininas
+    selectedFemaleVoice = ptVoices.find(voice => 
+      voice.name.toLowerCase().includes('fernanda')
+    ) || ptVoices.find(voice => {
       const name = voice.name.toLowerCase();
       return (
         name.includes('female') ||
-        name.includes('fernanda') ||
         name.includes('francisca') ||
         name.includes('helena') ||
         name.includes('maria') ||
         name.includes('luciana') ||
-        name.includes('vitoria') ||
-        name.includes('google português do brasil') // Voz nativa feminina do Chrome
+        name.includes('google português do brasil')
       );
-    }) || ptVoices[0]; // Fallback para a primeira voz PT-BR disponível
+    }) || ptVoices[0];
   }
 
-  // Carrega as vozes (compatível com o evento assíncrono dos navegadores)
+  // Carrega as vozes de forma síncrona e assíncrona
   setFemaleVoice();
   if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
     window.speechSynthesis.onvoiceschanged = setFemaleVoice;
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Se já estiver lendo, para a leitura
       if (isSpeaking) {
         window.speechSynthesis.cancel();
         isSpeaking = false;
@@ -89,9 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const utterance = new SpeechSynthesisUtterance(textToRead);
       utterance.lang = 'pt-BR';
-      utterance.rate = 1.0; // Velocidade de fala padrão
+      utterance.rate = 1.0;
 
-      // Aplica a voz feminina selecionada
       if (selectedFemaleVoice) {
         utterance.voice = selectedFemaleVoice;
       }
